@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>COVID TRACKER</title>
+   <script src="./index.js"></script>
+   <link rel="stylesheet" href="style.css" />
+   <style>
+      body {
+        margin-top: 100px;
+        background-color: #0042A4;
+        color: #fff;
+        text-align: center;
+      }
+      h1 {
+        font: 1.5em 'Roboto', sans-serif;
+        margin-bottom: 30px;
+      }
+      .spin {
+        display: inline-block;  
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, .3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+      }
+      @keyframes spin {
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes spin {
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+    </style>
+</head>
+<body>
+   <form id="myForm" action="getCovidData" ></form>
+      <input id="state" placeholder="Enter your state" >
+      <input id="county" placeholder="Enter your county" >
+      <input id="submit" type="submit" value="send it">
+   </form>
+
+   <div>
+      <h1 id="header">COVID TRACKER</h1id>
+      <h3>Date Range: 8/1/2022 to 1/15/2022</h3>
+ 
+      <!-- Table to display fetched user data -->
+      <div class="spin"></div>
+      <p>Deaths</p>
+      <table id="covidDDData"></table>
+      <p>Confirmed Cases</p>
+      <table id="covidCCData"></table>
+    </div>
+    <div id="myChart"></div>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+      zingchart.render({
+        id: 'myChart',
+        data: myConfig
+      });
+    </script>
+</body>
+</html>
